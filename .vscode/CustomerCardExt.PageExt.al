@@ -8,6 +8,14 @@ pageextension 50102 "Customer Card Ext" extends "Customer Card"
             {
                 ApplicationArea = All;
             }
+            field("Nr. veicoli"; Rec."Nr. veicoli")
+            {
+                ApplicationArea = All;
+            }
         }
+
+
+
     }
+
 }

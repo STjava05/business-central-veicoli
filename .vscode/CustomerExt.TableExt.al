@@ -7,5 +7,12 @@ tableextension 50101 "Customer Ext" extends Customer
             Caption = 'Segmento Cliente';
             DataClassification = CustomerContent;
         }
+        field(50101; "Nr. veicoli"; Integer)
+        {
+            Caption = 'Nr. veicoli';
+            FieldClass = FlowField;
+            CalcFormula = count(Veicolo where("Nr. cliente" = field("No.")));
+            Editable = false;
+        }
     }
 }
