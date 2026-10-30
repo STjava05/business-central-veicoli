@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "coverageData": [],
+  "testStatus": {
+    "50121|CreazioneVeicolo_NumeroAutoAssegnato": 0,
+    "50121|CreazioneVeicolo_ConteggioAumenta": 0
+  }
+}
