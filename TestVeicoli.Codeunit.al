@@ -58,4 +58,30 @@ codeunit 50121 "Test Veicoli"
         // [THEN] Il numero NON deve cambiare
         Assert.AreEqual(NumeroPrima, Veicolo."Nr.", 'Il numero è cambiato!');
     end;
+
+    [Test]
+    procedure RecordRef_ConteggioVeicoli()
+    var
+        Veicolo: Record Veicolo;
+        Utils: Codeunit "Veicoli Utils";
+        Assert: Codeunit "Test Assert";
+    begin
+        // [GIVEN] Il conteggio con la normale Record
+        Veicolo.Reset();
+
+        // [WHEN/THEN] La RecordRef dinamica deve dare lo stesso risultato
+        Assert.AreEqual(Veicolo.Count(), Utils.ContaVeicoli(),
+            'RecordRef conteggio errato!');
+    end;
+
+    [Test]
+    procedure RecordRef_DescriviCustomer()
+    var
+        Utils: Codeunit "Veicoli Utils";
+        Assert: Codeunit "Test Assert";
+        Descrizione: Text;
+    begin
+        Descrizione := Utils.DescriviTabella(Database::Customer);
+        Assert.AreNotEqual('', Descrizione, 'Descrizione vuota!');
+    end;
 }
