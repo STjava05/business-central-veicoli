@@ -39,4 +39,23 @@ codeunit 50121 "Test Veicoli"
         ConteggioDopo := Veicolo.Count();
         Assert.AreEqual(ConteggioPrima + 1, ConteggioDopo, 'Il veicolo non è stato inserito!');
     end;
+
+    [Test]
+    procedure ModificaVeicolo_NumeroNonCambiato()
+    var
+        Veicolo: Record Veicolo;
+        Assert: Codeunit "Test Assert";
+        NumeroPrima: Code[20];
+    begin
+        // [GIVEN] Un veicolo esistente
+        Veicolo.FindFirst();
+        NumeroPrima := Veicolo."Nr.";
+
+        // [WHEN] Modifico la marca
+        Veicolo.Marca := 'TEST-MODIFICA';
+        Veicolo.Modify(true);
+
+        // [THEN] Il numero NON deve cambiare
+        Assert.AreEqual(NumeroPrima, Veicolo."Nr.", 'Il numero è cambiato!');
+    end;
 }

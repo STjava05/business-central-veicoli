@@ -5,4 +5,10 @@ codeunit 50120 "Veicolo Events"
     begin
         Message('Nuovo veicolo creato: %1 %2 %3', Rec."Nr.", Rec.Marca, Rec.Modello);
     end;
+
+    [EventSubscriber(ObjectType::Table, Database::Veicolo, 'OnAfterModifyEvent', '', false, false)]
+    local procedure OnAfterModifyVeicolo(var Rec: Record Veicolo)
+    begin
+        Message('Veicolo modificato: %1', Rec."Nr.");
+    end;
 }
