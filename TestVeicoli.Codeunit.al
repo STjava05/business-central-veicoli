@@ -84,4 +84,23 @@ codeunit 50121 "Test Veicoli"
         Descrizione := Utils.DescriviTabella(Database::Customer);
         Assert.AreNotEqual('', Descrizione, 'Descrizione vuota!');
     end;
+
+    [Test]
+    procedure AssegnazioneCliente_StatoAssegnato()
+    var
+        Veicolo: Record Veicolo;
+        Assert: Codeunit "Test Assert";
+    begin
+        // [GIVEN] Un nuovo veicolo senza cliente
+        Veicolo.Init();
+        Veicolo.Insert(true);
+
+        // [WHEN] Assegno il cliente 10000 (Validate = esegue il trigger!)
+        Veicolo.Validate("Nr. cliente", '10000');
+        Veicolo.Modify(true);
+
+        // [THEN] Lo stato deve essere Assegnato
+        Assert.AreEqual(Veicolo.Stato::Assegnato, Veicolo.Stato,
+            'Stato non aggiornato dopo assegnazione cliente!');
+    end;
 }

@@ -36,9 +36,18 @@ table 50110 Veicolo
             Caption = 'Stato';
         }
         field(8; "Nr. cliente"; Code[20])
+
         {
             Caption = 'Nr. cliente';
+
             TableRelation = Customer."No.";
+            trigger OnValidate()
+            begin
+                if "Nr. cliente" <> '' then
+                    Stato := Stato::Assegnato
+                else
+                    Stato := Stato::Disponibile;
+            end;
         }
     }
 
