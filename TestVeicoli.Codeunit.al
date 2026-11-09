@@ -103,4 +103,21 @@ codeunit 50121 "Test Veicoli"
         Assert.AreEqual(Veicolo.Stato::Assegnato, Veicolo.Stato,
             'Stato non aggiornato dopo assegnazione cliente!');
     end;
+
+    [Test]
+    procedure DescriviTabella_RitornaNomeTabella()
+    var
+        Utils: Codeunit "Veicoli Utils";
+        Assert: Codeunit "Test Assert";
+        Descrizione: Text;
+    begin
+        // [GIVEN] Un nuovo veicolo senza cliente
+        Descrizione := Utils.DescriviTabella(Database::Veicolo);
+
+        // [THEN] Lo stato deve essere Assegnato
+        Assert.AreNotEqual(0, StrPos(Descrizione, 'Veicolo'),
+        'Il nome della tabella non è presente!');
+    end;
+
+
 }

@@ -7,6 +7,8 @@
     "50121|ModificaVeicolo_NumeroNonCambiato": 0,
     "50121|RecordRef_ConteggioVeicoli": 0,
     "50121|RecordRef_DescriviCustomer": 0,
-    "50121|AssegnazioneCliente_StatoAssegnato": 0
+    "50121|AssegnazioneCliente_StatoAssegnato": 0,
+    "50121|Utils_DescriviTabella": 0,
+    "50121|DescriviTabella_RitornaNomeTabella": 0
   }
 }

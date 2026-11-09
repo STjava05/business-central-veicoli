@@ -11,4 +11,10 @@ codeunit 50122 "Test Assert"
         if Format(Expected) = Format(Actual) then
             Error('%1 — valore inatteso: %2', Message, Actual);
     end;
+
+    procedure IsTrue(Condition: Boolean; Message: Text)
+    begin
+        if not Condition then
+            Error('%1', Message);
+    end;
 }
